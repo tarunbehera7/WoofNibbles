@@ -1,5 +1,5 @@
 {
-  "name": "woofnibbles2",
+  "name": "woofnibbles",
   "version": "1.0.0",
   "scripts": {
     "start": "npx parcel index.html",
