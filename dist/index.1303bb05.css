@@ -267,6 +267,23 @@ body:after {
   text-decoration: none;
 }
 
+.success-dialog {
+  color: #155724;
+  z-index: 9999;
+  text-align: center;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  padding: 10px 20px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 8px #0003;
+}
+
 @media (width <= 767px) {
   .main-layout {
     grid-template-columns: 1fr;

@@ -18634,7 +18634,45 @@ const App = ()=>{
     }, undefined);
 };
 _c = App;
-exports.default = App;
+exports.default = App; // import React from "react";
+ // import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+ // import LoginForm from "./LoginForm";
+ // import WelcomeSection from "./WelcomeSection";
+ // import Home from "./Home";
+ // // Placeholder components for other team members' pages
+ // const Cart = () => <h2>Cart (Team Member 3)</h2>;
+ // const Orders = () => <h2>Orders (Team Member 4)</h2>;
+ // const AdminDashboard = () => <h2>Admin Dashboard (Team Member 5)</h2>;
+ // const UserProfile = () => <h2>User Profile (Team Member 6)</h2>;
+ // const App = () => {
+ //   return (
+ //     <Router>
+ //       <div className="app-container">
+ //         <Routes>
+ //           {/* Login Page (Welcome + LoginForm) */}
+ //           <Route
+ //             path="/"
+ //             element={
+ //               <div className="login-page">
+ //                 <WelcomeSection />
+ //                 <LoginForm />
+ //               </div>
+ //             }
+ //           />
+ //           {/* Home Page (after login/signup) */}
+ //           <Route path="/home" element={<Home />} />
+ //           {/* Other Routes for Team Members */}
+ //           <Route path="/cart" element={<Cart />} />
+ //           <Route path="/orders" element={<Orders />} />
+ //           <Route path="/admin" element={<AdminDashboard />} />
+ //           <Route path="/profile" element={<UserProfile />} />
+ //         </Routes>
+ //       </div>
+ //     </Router>
+ //   );
+ // };
+ //
+ // export default App;
 var _c;
 $RefreshReg$(_c, "App");
 
@@ -18655,6 +18693,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _stylesCss = require("../../styles.css");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _s = $RefreshSig$();
@@ -18668,6 +18707,15 @@ const LoginForm = ()=>{
     const [signupPassword, setSignupPassword] = (0, _react.useState)("");
     const [error, setError] = (0, _react.useState)("");
     const [success, setSuccess] = (0, _react.useState)("");
+    const [showDialog, setShowDialog] = (0, _react.useState)(false); // New state for dialog visibility
+    (0, _react.useEffect)(()=>{
+        if (showDialog) {
+            const timer = setTimeout(()=>setShowDialog(false), 55000);
+            return ()=>clearTimeout(timer);
+        }
+    }, [
+        showDialog
+    ]);
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setError("");
@@ -18679,11 +18727,13 @@ const LoginForm = ()=>{
                     password: loginPassword
                 });
                 setSuccess("Login successful!");
-                console.log("Login response:", response.data);
-                // Store token (e.g., in localStorage) and redirect
+                // console.log("Login response:", response.data);
+                // // Store token (e.g., in localStorage) and redirect
+                //
+                setShowDialog(true);
                 localStorage.setItem("token", response.data.token);
                 // Redirect to product listing page (Team Member 2's task)
-                window.location.href = "/products"; // Replace with React Router navigation
+                window.location.href = "./Home.js"; // Replace with React Router navigation
             } else {
                 const response = await (0, _axiosDefault.default).post("http://localhost:8080/api/auth/register", {
                     name: signupName,
@@ -18695,336 +18745,347 @@ const LoginForm = ()=>{
                 setSignupName("");
                 setSignupEmail("");
                 setSignupPassword("");
-                console.log("Sign up response:", response.data);
+                // console.log("Sign up response:", response.data);
+                setShowDialog(true);
             }
         } catch (err) {
             setError(err.response?.data?.error || "Something went wrong");
             console.error(err);
         }
     };
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "login-form-container",
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
-            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                className: "error-message",
-                children: error
-            }, void 0, false, {
-                fileName: "src/components/LoginForm.js",
-                lineNumber: 58,
-                columnNumber: 17
-            }, undefined),
-            success && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                className: "success-message",
+            showDialog && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "success-dialog",
                 children: success
             }, void 0, false, {
                 fileName: "src/components/LoginForm.js",
-                lineNumber: 59,
-                columnNumber: 19
-            }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
-                className: "tab-list",
-                children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: "tab-item",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            className: `tab-link ${activeTab === "login" ? "active" : ""}`,
-                            href: "#",
-                            onClick: ()=>setActiveTab("login"),
-                            children: "Login"
-                        }, void 0, false, {
-                            fileName: "src/components/LoginForm.js",
-                            lineNumber: 63,
-                            columnNumber: 11
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/LoginForm.js",
-                        lineNumber: 62,
-                        columnNumber: 9
-                    }, undefined),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
-                        className: "tab-item",
-                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                            className: `tab-link ${activeTab === "signup" ? "active" : ""}`,
-                            href: "#",
-                            onClick: ()=>setActiveTab("signup"),
-                            children: "Sign Up"
-                        }, void 0, false, {
-                            fileName: "src/components/LoginForm.js",
-                            lineNumber: 72,
-                            columnNumber: 11
-                        }, undefined)
-                    }, void 0, false, {
-                        fileName: "src/components/LoginForm.js",
-                        lineNumber: 71,
-                        columnNumber: 9
-                    }, undefined)
-                ]
-            }, void 0, true, {
-                fileName: "src/components/LoginForm.js",
-                lineNumber: 61,
+                lineNumber: 73,
                 columnNumber: 7
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
-                onSubmit: handleSubmit,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                className: "login-form-container",
                 children: [
-                    activeTab === "login" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                        className: "error-message",
+                        children: error
+                    }, void 0, false, {
+                        fileName: "src/components/LoginForm.js",
+                        lineNumber: 81,
+                        columnNumber: 17
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
+                        className: "tab-list",
                         children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "form-group",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "input-wrapper",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "input-icon",
-                                            children: "\uD83D\uDCE7"
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 87,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "email",
-                                            className: "form-input",
-                                            placeholder: "Email Address",
-                                            value: loginEmail,
-                                            onChange: (e)=>setLoginEmail(e.target.value),
-                                            required: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 88,
-                                            columnNumber: 17
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/LoginForm.js",
-                                    lineNumber: 86,
-                                    columnNumber: 15
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 85,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "form-group",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "input-wrapper",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "input-icon",
-                                            children: "\uD83D\uDD12"
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 100,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "password",
-                                            className: "form-input",
-                                            placeholder: "Password",
-                                            value: loginPassword,
-                                            onChange: (e)=>setLoginPassword(e.target.value),
-                                            required: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 101,
-                                            columnNumber: 17
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/LoginForm.js",
-                                    lineNumber: 99,
-                                    columnNumber: 15
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 98,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "forgot-password",
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "tab-item",
                                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                    className: `tab-link ${activeTab === "login" ? "active" : ""}`,
                                     href: "#",
-                                    className: "forgot-link",
-                                    children: "Forgot password?"
+                                    onClick: (e)=>{
+                                        e.preventDefault();
+                                        setActiveTab("login");
+                                    },
+                                    children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/components/LoginForm.js",
-                                    lineNumber: 112,
-                                    columnNumber: 15
+                                    lineNumber: 87,
+                                    columnNumber: 11
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/LoginForm.js",
-                                lineNumber: 111,
-                                columnNumber: 13
+                                lineNumber: 86,
+                                columnNumber: 9
                             }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                type: "submit",
-                                className: "submit-button",
-                                children: "\uD83D\uDC3E Login"
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 114,
-                                columnNumber: 13
-                            }, undefined)
-                        ]
-                    }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                        children: [
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "form-group",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "input-wrapper",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "input-icon",
-                                            children: "\uD83D\uDC64"
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 122,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "text",
-                                            className: "form-input",
-                                            placeholder: "Full Name",
-                                            value: signupName,
-                                            onChange: (e)=>setSignupName(e.target.value),
-                                            required: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 123,
-                                            columnNumber: 17
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
+                                className: "tab-item",
+                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                    className: `tab-link ${activeTab === "signup" ? "active" : ""}`,
+                                    href: "#",
+                                    onClick: (e)=>{
+                                        e.preventDefault();
+                                        setActiveTab("signup");
+                                    },
+                                    children: "Sign Up"
+                                }, void 0, false, {
                                     fileName: "src/components/LoginForm.js",
-                                    lineNumber: 121,
-                                    columnNumber: 15
+                                    lineNumber: 98,
+                                    columnNumber: 11
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/LoginForm.js",
-                                lineNumber: 120,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "form-group",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "input-wrapper",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "input-icon",
-                                            children: "\uD83D\uDCE7"
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 135,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "email",
-                                            className: "form-input",
-                                            placeholder: "Email Address",
-                                            value: signupEmail,
-                                            onChange: (e)=>setSignupEmail(e.target.value),
-                                            required: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 136,
-                                            columnNumber: 17
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/LoginForm.js",
-                                    lineNumber: 134,
-                                    columnNumber: 15
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 133,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                className: "form-group",
-                                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-                                    className: "input-wrapper",
-                                    children: [
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
-                                            className: "input-icon",
-                                            children: "\uD83D\uDD12"
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 148,
-                                            columnNumber: 17
-                                        }, undefined),
-                                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
-                                            type: "password",
-                                            className: "form-input",
-                                            placeholder: "Password",
-                                            value: signupPassword,
-                                            onChange: (e)=>setSignupPassword(e.target.value),
-                                            required: true
-                                        }, void 0, false, {
-                                            fileName: "src/components/LoginForm.js",
-                                            lineNumber: 149,
-                                            columnNumber: 17
-                                        }, undefined)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "src/components/LoginForm.js",
-                                    lineNumber: 147,
-                                    columnNumber: 15
-                                }, undefined)
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 146,
-                                columnNumber: 13
-                            }, undefined),
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
-                                type: "submit",
-                                className: "submit-button",
-                                children: "\uD83D\uDC3E Sign Up"
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 159,
-                                columnNumber: 13
-                            }, undefined)
-                        ]
-                    }, void 0, true),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
-                        className: "form-footer",
-                        children: [
-                            activeTab === "login" ? "Don't have an account? " : "Already have an account? ",
-                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
-                                href: "#",
-                                className: "form-link",
-                                onClick: (e)=>{
-                                    e.preventDefault();
-                                    setActiveTab(activeTab === "login" ? "signup" : "login");
-                                },
-                                children: activeTab === "login" ? "Sign up" : "Login"
-                            }, void 0, false, {
-                                fileName: "src/components/LoginForm.js",
-                                lineNumber: 167,
-                                columnNumber: 11
+                                lineNumber: 97,
+                                columnNumber: 9
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/LoginForm.js",
-                        lineNumber: 165,
-                        columnNumber: 9
+                        lineNumber: 85,
+                        columnNumber: 7
+                    }, undefined),
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
+                        onSubmit: handleSubmit,
+                        children: [
+                            activeTab === "login" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "form-group",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "input-wrapper",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "input-icon",
+                                                    children: "\uD83D\uDCE7"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 116,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "email",
+                                                    className: "form-input",
+                                                    placeholder: "Email Address",
+                                                    value: loginEmail,
+                                                    onChange: (e)=>setLoginEmail(e.target.value),
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 117,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 115,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 114,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "form-group",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "input-wrapper",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "input-icon",
+                                                    children: "\uD83D\uDD12"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 129,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "password",
+                                                    className: "form-input",
+                                                    placeholder: "Password",
+                                                    value: loginPassword,
+                                                    onChange: (e)=>setLoginPassword(e.target.value),
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 130,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 128,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 127,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "forgot-password",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                            href: "#",
+                                            className: "forgot-link",
+                                            children: "Forgot password?"
+                                        }, void 0, false, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 141,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 140,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        type: "submit",
+                                        className: "submit-button",
+                                        children: "\uD83D\uDC3E Login"
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 143,
+                                        columnNumber: 13
+                                    }, undefined)
+                                ]
+                            }, void 0, true) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                                children: [
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "form-group",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "input-wrapper",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "input-icon",
+                                                    children: "\uD83D\uDC64"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 151,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "text",
+                                                    className: "form-input",
+                                                    placeholder: "Full Name",
+                                                    value: signupName,
+                                                    onChange: (e)=>setSignupName(e.target.value),
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 152,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 150,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 149,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "form-group",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "input-wrapper",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "input-icon",
+                                                    children: "\uD83D\uDCE7"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 164,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "email",
+                                                    className: "form-input",
+                                                    placeholder: "Email Address",
+                                                    value: signupEmail,
+                                                    onChange: (e)=>setSignupEmail(e.target.value),
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 165,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 163,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 162,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                        className: "form-group",
+                                        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+                                            className: "input-wrapper",
+                                            children: [
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                                                    className: "input-icon",
+                                                    children: "\uD83D\uDD12"
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 177,
+                                                    columnNumber: 17
+                                                }, undefined),
+                                                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
+                                                    type: "password",
+                                                    className: "form-input",
+                                                    placeholder: "Password",
+                                                    value: signupPassword,
+                                                    onChange: (e)=>setSignupPassword(e.target.value),
+                                                    required: true
+                                                }, void 0, false, {
+                                                    fileName: "src/components/LoginForm.js",
+                                                    lineNumber: 178,
+                                                    columnNumber: 17
+                                                }, undefined)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "src/components/LoginForm.js",
+                                            lineNumber: 176,
+                                            columnNumber: 15
+                                        }, undefined)
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 175,
+                                        columnNumber: 13
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        type: "submit",
+                                        className: "submit-button",
+                                        children: "\uD83D\uDC3E Sign Up"
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 188,
+                                        columnNumber: 13
+                                    }, undefined)
+                                ]
+                            }, void 0, true),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                                className: "form-footer",
+                                children: [
+                                    activeTab === "login" ? "Don't have an account? " : "Already have an account? ",
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
+                                        href: "#",
+                                        className: "form-link",
+                                        onClick: (e)=>{
+                                            e.preventDefault();
+                                            setActiveTab(activeTab === "login" ? "signup" : "login");
+                                        },
+                                        children: activeTab === "login" ? "Sign up" : "Login"
+                                    }, void 0, false, {
+                                        fileName: "src/components/LoginForm.js",
+                                        lineNumber: 196,
+                                        columnNumber: 11
+                                    }, undefined)
+                                ]
+                            }, void 0, true, {
+                                fileName: "src/components/LoginForm.js",
+                                lineNumber: 194,
+                                columnNumber: 9
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/LoginForm.js",
+                        lineNumber: 111,
+                        columnNumber: 7
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginForm.js",
-                lineNumber: 82,
-                columnNumber: 7
+                lineNumber: 78,
+                columnNumber: 5
             }, undefined)
         ]
-    }, void 0, true, {
-        fileName: "src/components/LoginForm.js",
-        lineNumber: 56,
-        columnNumber: 5
-    }, undefined);
+    }, void 0, true);
 };
-_s(LoginForm, "ZFQHmnRGu6PLIcnbE8oEUVa7rug=");
+_s(LoginForm, "Q3OAN3EHCPHP2BdJKJVhnAkkijY=");
 _c = LoginForm;
 exports.default = LoginForm;
 var _c;
@@ -19035,7 +19096,7 @@ $RefreshReg$(_c, "LoginForm");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"jo6P5":[function(require,module,exports,__globalThis) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../styles.css":"7N9bM"}],"jo6P5":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
@@ -23970,7 +24031,7 @@ function registerExportsForReactRefresh(module1) {
 },{"7422ead32dcc1e6b":"786KC","630b62916b1ae0e7":"4SQxb"}],"4SQxb":[function(require,module,exports,__globalThis) {
 module.exports = JSON.parse("{\"name\":\"react-refresh\",\"description\":\"React is a JavaScript library for building user interfaces.\",\"keywords\":[\"react\"],\"version\":\"0.14.2\",\"homepage\":\"https://reactjs.org/\",\"bugs\":\"https://github.com/facebook/react/issues\",\"license\":\"MIT\",\"files\":[\"LICENSE\",\"README.md\",\"babel.js\",\"runtime.js\",\"cjs/\",\"umd/\"],\"main\":\"runtime.js\",\"exports\":{\".\":\"./runtime.js\",\"./runtime\":\"./runtime.js\",\"./babel\":\"./babel.js\",\"./package.json\":\"./package.json\"},\"repository\":{\"type\":\"git\",\"url\":\"https://github.com/facebook/react.git\",\"directory\":\"packages/react\"},\"engines\":{\"node\":\">=0.10.0\"},\"devDependencies\":{\"react-16-8\":\"npm:react@16.8.0\",\"react-dom-16-8\":\"npm:react-dom@16.8.0\",\"scheduler-0-13\":\"npm:scheduler@0.13.0\"}}");
 
-},{}],"4e9Em":[function(require,module,exports,__globalThis) {
+},{}],"7N9bM":[function() {},{}],"4e9Em":[function(require,module,exports,__globalThis) {
 var $parcel$ReactRefreshHelpers$82dd = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;

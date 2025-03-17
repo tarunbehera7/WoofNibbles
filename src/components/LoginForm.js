@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "../../styles.css";
 import axios from "axios";
 
 const LoginForm = () => {
@@ -11,6 +12,15 @@ const LoginForm = () => {
   const [signupPassword, setSignupPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [showDialog, setShowDialog] = useState(false); // New state for dialog visibility
+
+
+  useEffect(() => {
+    if (showDialog) {
+      const timer = setTimeout(() => setShowDialog(false), 55000);
+      return () => clearTimeout(timer);
+    }
+  }, [showDialog]);
 
 
   const handleSubmit = async (e) => {
@@ -26,12 +36,14 @@ const LoginForm = () => {
           password: loginPassword,
         });
         setSuccess("Login successful!");
-        console.log("Login response:", response.data);
-        // Store token (e.g., in localStorage) and redirect
+        // console.log("Login response:", response.data);
+        // // Store token (e.g., in localStorage) and redirect
+        //
+        setShowDialog(true);
         localStorage.setItem("token", response.data.token);
         // Redirect to product listing page (Team Member 2's task)
-        window.location.href = "/products"; // Replace with React Router navigation
-      } 
+        window.location.href = "./Home.js"; // Replace with React Router navigation
+      }
       else {
         const response = await axios.post("http://localhost:8080/api/auth/register", {
           name: signupName,
@@ -43,27 +55,41 @@ const LoginForm = () => {
         setSignupName("");
         setSignupEmail("");
         setSignupPassword("");
-        console.log("Sign up response:", response.data);
+        // console.log("Sign up response:", response.data);
+        setShowDialog(true);
       }
-    } 
+    }
     catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
       console.error(err);
     }
   };
 
+
   return (
+    <>
+    {/* Dialog Box for Success Message */}
+    {showDialog && (
+      <div className="success-dialog">
+        {success}
+      </div>
+    )}
+
     <div className="login-form-container">
 
+
       {error && <p className="error-message">{error}</p>}
-      {success && <p className="success-message">{success}</p>}
-      
+      {/* {success && <p className="success-message">{success}</p>} */}
+      {/*-------------------------------------- */}
+
       <ul className="tab-list">
         <li className="tab-item">
           <a
             className={`tab-link ${activeTab === "login" ? "active" : ""}`}
             href="#"
-            onClick={() => setActiveTab("login")}
+            onClick={ (e) => {
+              e.preventDefault();
+              setActiveTab("login");}} 
           >
             Login
           </a>
@@ -72,14 +98,17 @@ const LoginForm = () => {
           <a
             className={`tab-link ${activeTab === "signup" ? "active" : ""}`}
             href="#"
-            onClick={() => setActiveTab("signup")}
+            onClick={(e) => { 
+              e.preventDefault();
+              setActiveTab("signup");}}
           >
             Sign Up
           </a>
+          
         </li>
       </ul>
 
-      <form onSubmit= {handleSubmit}>
+      <form onSubmit={handleSubmit}>
         {activeTab === "login" ? (
           <>
             <div className="form-group">
@@ -89,8 +118,8 @@ const LoginForm = () => {
                   type="email"
                   className="form-input"
                   placeholder="Email Address"
-                  value= {loginEmail}
-                  onChange= { (e) => setLoginEmail(e.target.value)}
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
                   required
                 />
               </div>
@@ -102,8 +131,8 @@ const LoginForm = () => {
                   type="password"
                   className="form-input"
                   placeholder="Password"
-                  value= {loginPassword}
-                  onChange= { (e) => setLoginPassword(e.target.value)}
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
                   required
                 />
               </div>
@@ -125,7 +154,7 @@ const LoginForm = () => {
                   className="form-input"
                   placeholder="Full Name"
                   value={signupName}
-                  onChange={ (e) => setSignupName(e.target.value)}
+                  onChange={(e) => setSignupName(e.target.value)}
                   required
                 />
               </div>
@@ -138,7 +167,7 @@ const LoginForm = () => {
                   className="form-input"
                   placeholder="Email Address"
                   value={signupEmail}
-                  onChange={ (e) => setSignupEmail(e.target.value)}
+                  onChange={(e) => setSignupEmail(e.target.value)}
                   required
                 />
               </div>
@@ -151,7 +180,7 @@ const LoginForm = () => {
                   className="form-input"
                   placeholder="Password"
                   value={signupPassword}
-                  onChange={ (e) => setSignupPassword(e.target.value)}
+                  onChange={(e) => setSignupPassword(e.target.value)}
                   required
                 />
               </div>
@@ -167,7 +196,7 @@ const LoginForm = () => {
           <a
             href="#"
             className="form-link"
-            onClick= { (e) => {
+            onClick={(e) => {
               e.preventDefault();
               setActiveTab(activeTab === "login" ? "signup" : "login");
             }}
@@ -178,6 +207,7 @@ const LoginForm = () => {
 
       </form>
     </div>
+    </>
   );
 };
 

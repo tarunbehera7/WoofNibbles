@@ -11,14 +11,15 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = "http://localhost:3000") // Allow React frontend
+@CrossOrigin(origins = "http://localhost:1234") // Allow React frontEnd
 public class AuthController {
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestBody User user) {
+    public ResponseEntity<?> registerUser(@RequestBody User user) 
+    {
         String responseMessage = userService.registerUser(user);
         Map<String, String> response = new HashMap<>();
         response.put("message", responseMessage);
@@ -26,7 +27,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginUser(@RequestBody Map<String, String> loginData) {
+    public ResponseEntity<?> loginUser(@RequestBody Map<String, String> loginData) 
+    {
         User user = userService.authenticateUser(loginData.get("email"), loginData.get("password"));
 
         if (user != null) {
