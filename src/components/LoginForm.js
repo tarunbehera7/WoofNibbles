@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../../styles.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
@@ -13,11 +14,18 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [showDialog, setShowDialog] = useState(false); // New state for dialog visibility
+  
+  // Inside LoginForm component
+  const navigate = useNavigate();
 
 
   useEffect(() => {
     if (showDialog) {
-      const timer = setTimeout(() => setShowDialog(false), 55000);
+      const timer = setTimeout( () => { 
+        setShowDialog(false);
+        // window.location.href = "./Home.js"; // Redirect after the dialog disappears
+        navigate("/home");
+      }, 3000);
       return () => clearTimeout(timer);
     }
   }, [showDialog]);
@@ -41,8 +49,15 @@ const LoginForm = () => {
         //
         setShowDialog(true);
         localStorage.setItem("token", response.data.token);
-        // Redirect to product listing page (Team Member 2's task)
-        window.location.href = "./Home.js"; // Replace with React Router navigation
+        // // Redirect to product listing page (Team Member 2's task)
+        // window.location.href = "./Home.js"; // Replace with React Router navigation
+        localStorage.setItem("username", response.data.user.name); // Store username
+
+        //// Redirect to Home.js after delay
+        // Return to stop further code from running
+        return setTimeout(() => {
+          window.location.href = "./Home.js";
+        }, 3000);
       }
       else {
         const response = await axios.post("http://localhost:8080/api/auth/register", {
@@ -57,6 +72,7 @@ const LoginForm = () => {
         setSignupPassword("");
         // console.log("Sign up response:", response.data);
         setShowDialog(true);
+        return; // Return to prevent error from appearing
       }
     }
     catch (err) {
@@ -68,145 +84,147 @@ const LoginForm = () => {
 
   return (
     <>
-    {/* Dialog Box for Success Message */}
-    {showDialog && (
-      <div className="success-dialog">
-        {success}
+      {/* Dialog Box for Success Message */}
+      {showDialog && (
+        <div className="success-dialog">
+          {success}
+        </div>
+      )}
+
+      <div className="login-form-container">
+
+
+        {error && <p className="error-message">{error}</p>}
+        {/* {success && <p className="success-message">{success}</p>} */}
+        {/*-------------------------------------- */}
+
+        <ul className="tab-list">
+          <li className="tab-item">
+            <a
+              className={`tab-link ${activeTab === "login" ? "active" : ""}`}
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveTab("login");
+              }}
+            >
+              Login
+            </a>
+          </li>
+          <li className="tab-item">
+            <a
+              className={`tab-link ${activeTab === "signup" ? "active" : ""}`}
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveTab("signup");
+              }}
+            >
+              Sign Up
+            </a>
+
+          </li>
+        </ul>
+
+        <form onSubmit={handleSubmit}>
+          {activeTab === "login" ? (
+            <>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">📧</span>
+                  <input
+                    type="email"
+                    className="form-input"
+                    placeholder="Email Address"
+                    value={loginEmail}
+                    onChange={(e) => setLoginEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">🔒</span>
+                  <input
+                    type="password"
+                    className="form-input"
+                    placeholder="Password"
+                    value={loginPassword}
+                    onChange={(e) => setLoginPassword(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="forgot-password">
+                <a href="#" className="forgot-link">Forgot password?</a>
+              </div>
+              <button type="submit" className="submit-button">
+                🐾 Login
+              </button>
+            </>
+          ) : (
+            <>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">👤</span>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="Full Name"
+                    value={signupName}
+                    onChange={(e) => setSignupName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">📧</span>
+                  <input
+                    type="email"
+                    className="form-input"
+                    placeholder="Email Address"
+                    value={signupEmail}
+                    onChange={(e) => setSignupEmail(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">🔒</span>
+                  <input
+                    type="password"
+                    className="form-input"
+                    placeholder="Password"
+                    value={signupPassword}
+                    onChange={(e) => setSignupPassword(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <button type="submit" className="submit-button">
+                🐾 Sign Up
+              </button>
+            </>
+          )}
+
+          <p className="form-footer">
+            {activeTab === "login" ? "Don't have an account? " : "Already have an account? "}
+            <a
+              href="#"
+              className="form-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setActiveTab(activeTab === "login" ? "signup" : "login");
+              }}
+            >
+              {activeTab === "login" ? "Sign up" : "Login"}
+            </a>
+          </p>
+
+        </form>
       </div>
-    )}
-
-    <div className="login-form-container">
-
-
-      {error && <p className="error-message">{error}</p>}
-      {/* {success && <p className="success-message">{success}</p>} */}
-      {/*-------------------------------------- */}
-
-      <ul className="tab-list">
-        <li className="tab-item">
-          <a
-            className={`tab-link ${activeTab === "login" ? "active" : ""}`}
-            href="#"
-            onClick={ (e) => {
-              e.preventDefault();
-              setActiveTab("login");}} 
-          >
-            Login
-          </a>
-        </li>
-        <li className="tab-item">
-          <a
-            className={`tab-link ${activeTab === "signup" ? "active" : ""}`}
-            href="#"
-            onClick={(e) => { 
-              e.preventDefault();
-              setActiveTab("signup");}}
-          >
-            Sign Up
-          </a>
-          
-        </li>
-      </ul>
-
-      <form onSubmit={handleSubmit}>
-        {activeTab === "login" ? (
-          <>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <span className="input-icon">📧</span>
-                <input
-                  type="email"
-                  className="form-input"
-                  placeholder="Email Address"
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <span className="input-icon">🔒</span>
-                <input
-                  type="password"
-                  className="form-input"
-                  placeholder="Password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="forgot-password">
-              <a href="#" className="forgot-link">Forgot password?</a>
-            </div>
-            <button type="submit" className="submit-button">
-              🐾 Login
-            </button>
-          </>
-        ) : (
-          <>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <span className="input-icon">👤</span>
-                <input
-                  type="text"
-                  className="form-input"
-                  placeholder="Full Name"
-                  value={signupName}
-                  onChange={(e) => setSignupName(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <span className="input-icon">📧</span>
-                <input
-                  type="email"
-                  className="form-input"
-                  placeholder="Email Address"
-                  value={signupEmail}
-                  onChange={(e) => setSignupEmail(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <div className="form-group">
-              <div className="input-wrapper">
-                <span className="input-icon">🔒</span>
-                <input
-                  type="password"
-                  className="form-input"
-                  placeholder="Password"
-                  value={signupPassword}
-                  onChange={(e) => setSignupPassword(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
-            <button type="submit" className="submit-button">
-              🐾 Sign Up
-            </button>
-          </>
-        )}
-
-        <p className="form-footer">
-          {activeTab === "login" ? "Don't have an account? " : "Already have an account? "}
-          <a
-            href="#"
-            className="form-link"
-            onClick={(e) => {
-              e.preventDefault();
-              setActiveTab(activeTab === "login" ? "signup" : "login");
-            }}
-          >
-            {activeTab === "login" ? "Sign up" : "Login"}
-          </a>
-        </p>
-
-      </form>
-    </div>
     </>
   );
 };
