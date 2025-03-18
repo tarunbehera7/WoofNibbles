@@ -16,10 +16,16 @@ public class User
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    private String name;
+//    @Column(nullable = false)
+//    private String name;
+    @Column(name = "first_name", nullable = false) // New field
+    private String firstName;
 
-    // ✅ Manually added getter methods
+    @Column(name = "last_name", nullable = false) // New field
+    private String lastName;
+
+    
+    // ️✔️ Manually added getter methods
     public String getEmail() {
         return email;
     }
@@ -28,11 +34,18 @@ public class User
         return password;
     }
 
-    public String getName() {
-        return name;
+    //  public String getName() {
+    //      return name;
+    //  }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
     }
 
-    // ✅ Manually added setter methods
+    
+    // ✔️ Manually added setter methods
     public void setEmail(String email) {
         this.email = email;
     }
@@ -41,7 +54,15 @@ public class User
         this.password = password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    // public void setName(String name) {
+    //     this.name = name;
+    // }
+    
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
