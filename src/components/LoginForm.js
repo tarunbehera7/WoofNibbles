@@ -4,35 +4,31 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-
   const [activeTab, setActiveTab] = useState("login");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-  const [signupName, setSignupName] = useState("");
+  const [signupFirstName, setSignupFirstName] = useState("");
+  const [signupLastName, setSignupLastName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [showDialog, setShowDialog] = useState(false); // New state for dialog visibility
-  
-  // Inside LoginForm component
+  const [showDialog, setShowDialog] = useState(false);
+
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    if (showDialog) {
-      const timer = setTimeout( () => { 
+    if (showDialog && success === "Login successful!") { 
+      // Only redirect on login success
+      const timer = setTimeout(() => {
         setShowDialog(false);
-        // window.location.href = "./Home.js"; // Redirect after the dialog disappears
         navigate("/home");
       }, 3000);
       return () => clearTimeout(timer);
     }
-  }, [showDialog]);
-
+  }, [showDialog, success, navigate]);
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
     setError("");
     setSuccess("");
@@ -44,60 +40,41 @@ const LoginForm = () => {
           password: loginPassword,
         });
         setSuccess("Login successful!");
-        // console.log("Login response:", response.data);
-        // // Store token (e.g., in localStorage) and redirect
-        //
-        setShowDialog(true);
+        localStorage.setItem("userEmail", loginEmail);
         localStorage.setItem("token", response.data.token);
-        // // Redirect to product listing page (Team Member 2's task)
-        // window.location.href = "./Home.js"; // Replace with React Router navigation
-        localStorage.setItem("username", response.data.user.name); // Store username
-
-        //// Redirect to Home.js after delay
-        // Return to stop further code from running
-        return setTimeout(() => {
-          window.location.href = "./Home.js";
-        }, 3000);
-      }
-      else {
+        localStorage.setItem("firstName", response.data.firstName); // Store firstName
+        setShowDialog(true);
+      } else {
         const response = await axios.post("http://localhost:8080/api/auth/register", {
-          name: signupName,
+          firstName: signupFirstName,
+          lastName: signupLastName,
           email: signupEmail,
           password: signupPassword,
         });
         setSuccess("Sign up successful! Please log in.");
         setActiveTab("login");
-        setSignupName("");
+        setSignupFirstName("");
+        setSignupLastName("");
         setSignupEmail("");
         setSignupPassword("");
-        // console.log("Sign up response:", response.data);
-        setShowDialog(true);
-        return; // Return to prevent error from appearing
+        setShowDialog(true); // Show dialog, but no redirect
       }
-    }
-    catch (err) {
+    } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
       console.error(err);
     }
   };
 
-
+  // Rest of the JSX remains unchanged
   return (
     <>
-      {/* Dialog Box for Success Message */}
       {showDialog && (
         <div className="success-dialog">
           {success}
         </div>
       )}
-
       <div className="login-form-container">
-
-
         {error && <p className="error-message">{error}</p>}
-        {/* {success && <p className="success-message">{success}</p>} */}
-        {/*-------------------------------------- */}
-
         <ul className="tab-list">
           <li className="tab-item">
             <a
@@ -122,10 +99,8 @@ const LoginForm = () => {
             >
               Sign Up
             </a>
-
           </li>
         </ul>
-
         <form onSubmit={handleSubmit}>
           {activeTab === "login" ? (
             <>
@@ -170,9 +145,22 @@ const LoginForm = () => {
                   <input
                     type="text"
                     className="form-input"
-                    placeholder="Full Name"
-                    value={signupName}
-                    onChange={(e) => setSignupName(e.target.value)}
+                    placeholder="First Name"
+                    value={signupFirstName}
+                    onChange={(e) => setSignupFirstName(e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+              <div className="form-group">
+                <div className="input-wrapper">
+                  <span className="input-icon">👤</span>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="Last Name"
+                    value={signupLastName}
+                    onChange={(e) => setSignupLastName(e.target.value)}
                     required
                   />
                 </div>
@@ -208,7 +196,6 @@ const LoginForm = () => {
               </button>
             </>
           )}
-
           <p className="form-footer">
             {activeTab === "login" ? "Don't have an account? " : "Already have an account? "}
             <a
@@ -222,7 +209,6 @@ const LoginForm = () => {
               {activeTab === "login" ? "Sign up" : "Login"}
             </a>
           </p>
-
         </form>
       </div>
     </>
