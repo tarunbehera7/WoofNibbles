@@ -5,7 +5,7 @@ import Navbar from './Navbar';
 
 function ProductDetails() {
   
-    const { id } = useParams();
+  const { id } = useParams();
   const firstName = localStorage.getItem("firstName") || "User"; 
 
   const product = {
