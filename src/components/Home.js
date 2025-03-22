@@ -193,7 +193,7 @@ const Home = () => {
             <div className="top-products-section">
               <h2>Top Products</h2>
               <div className="products-grid">
-                {topProducts.map((product) => (
+                {topProducts.map( (product) => (
                   <div key={product.id} className="product-card">
                     <img src={product.img} alt={product.name} />
                     <h3>{product.name}</h3>
