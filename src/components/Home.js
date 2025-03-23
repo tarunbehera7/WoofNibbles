@@ -143,13 +143,12 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  
-  const topProducts = [
-    { id: 1, name: "Premium Dog Food", price: "$25", img: dogFood },
-    { id: 2, name: "Chew Toy", price: "$10", img: chewToy },
-    { id: 3, name: "Cat Treats", price: "$12", img: poopBags },
-  ];
 
+  const topProducts = [
+    { id: 1, name: "Premium Dog Food", price: "₹1,499", img: dogFood },
+    { id: 2, name: "Chew Toy", price: "₹599", img: chewToy },
+    { id: 3, name: "Eco friendly Poop Bags", price: "₹349", img: poopBags },
+  ];
 
 
   return (
@@ -174,8 +173,7 @@ const Home = () => {
                   <h2>Find the Best Food For Your Pet</h2>
                   <div className="promo-text">
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Magnis nibh tellus vestibulum vestibulum. Turpis ac.
+                       Explore high-quality pet food, fun toys, and essential accessories—all in one place.
                     </p>
                     <div className="promo-buttons">
                       <button className="order-button">Order Now</button>
