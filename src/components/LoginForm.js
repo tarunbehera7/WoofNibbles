@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
+
   const [activeTab, setActiveTab] = useState("login");
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
@@ -28,6 +29,7 @@ const LoginForm = () => {
     }
   }, [showDialog, success, navigate]);
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -44,7 +46,8 @@ const LoginForm = () => {
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("firstName", response.data.firstName); // Store firstName
         setShowDialog(true);
-      } else {
+      } 
+      else {
         const response = await axios.post("http://localhost:8080/api/auth/register", {
           firstName: signupFirstName,
           lastName: signupLastName,
