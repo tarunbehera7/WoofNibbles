@@ -1,26 +1,27 @@
-/* Cart.css */
-.cart-container {
+/* .cart-container {
     margin-top: 80px;
     width: 50%;
-    /* margin: auto; */
-    padding: 20px;
+    padding: 30px;
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h2, h3 {
+.cart-container h2, 
+.cart-container h3 {
     text-align: center;
     color: #333;
 }
 
-ul {
+
+.cart-container ul {
     list-style-type: none;
     padding: 0;
 }
 
-li {
+
+.cart-container li {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,7 +29,8 @@ li {
     border-bottom: 1px solid #ddd;
 }
 
-button {
+
+.cart-container button {
     padding: 5px 10px;
     border: none;
     background-color: #ff4d4d;
@@ -37,6 +39,66 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.cart-container button:hover {
+    background-color: #cc0000;
+} */
+
+
+
+
+
+
+
+
+
+
+
+.cart-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    padding-top: 60px; /* Adjust for navbar spacing */
+}
+
+.cart-container {
+    max-width: 600px;
+    width: 90%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-container h2, 
+.cart-containerh3 {
+    color: #333;
+}
+
+.cart-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-container li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-container button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-container button:hover {
     background-color: #cc0000;
 }
