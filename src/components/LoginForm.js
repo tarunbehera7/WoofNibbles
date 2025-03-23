@@ -150,7 +150,11 @@ const LoginForm = () => {
                     className="form-input"
                     placeholder="First Name"
                     value={signupFirstName}
-                    onChange={(e) => setSignupFirstName(e.target.value)}
+                    // onChange={(e) => setSignupFirstName(e.target.value)}
+                    onChange={(e) => {
+                      const formattedName = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+                      setSignupFirstName(formattedName);
+                    }}
                     required
                   />
                 </div>
@@ -163,7 +167,11 @@ const LoginForm = () => {
                     className="form-input"
                     placeholder="Last Name"
                     value={signupLastName}
-                    onChange={(e) => setSignupLastName(e.target.value)}
+                    // onChange={(e) => setSignupLastName(e.target.value)}
+                    onChange={(e) => {
+                      const formattedName1 = e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1);
+                      setSignupLastName(formattedName1);
+                    }}
                     required
                   />
                 </div>
