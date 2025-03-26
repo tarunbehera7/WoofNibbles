@@ -1,16 +1,17 @@
 import React from 'react';
-// import '../assets/ProductDetails.css';
 import Navbar from './Navbar';
 import products from '../utils/mockData';
 import ProductCard from './ProductCard';
-import "../assets/ProductList.css";
+import "../styles/ProductList.css";
 
 function ProductList() {
+    
     const firstName = localStorage.getItem("firstName") || "User";
 
     return (
         <div className="page-container">
-            <Navbar username={firstName} /> {/* Moved outside for proper alignment */}
+            
+            <Navbar username={firstName} /> 
 
             <div className="product-list">
                 {products.map((product) => (
