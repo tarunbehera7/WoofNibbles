@@ -70,7 +70,6 @@ body {
     color: HSL(30, 10%, 15%);
 }
 
-
 .main-layout {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -79,14 +78,12 @@ body {
     gap: 20px;
 }
 
-
 .welcome-section {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 20px;
 }
-
 
 .login-section {
     display: flex;
