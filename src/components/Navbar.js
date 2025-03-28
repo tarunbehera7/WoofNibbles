@@ -184,11 +184,9 @@ const Navbar = ({ username }) => {
               </li>
             </ul>
           </nav>
-
           <div className="user-info">
             <span className="username">{username || "User"}</span>
           </div>
-
           {/* Logout button for desktop */}
           <div className="logout-button desktop-logout" onClick={handleLogout}>
             <img src={LogoutIcon} alt="Logout" className="logout-icon" />
