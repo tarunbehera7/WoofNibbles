@@ -160,7 +160,6 @@ const Navbar = ({ username }) => {
 
         {/* Navigation Links & User Info */}
         <div className="navbar-right">
-
           {/* Hamburger Menu */}
           <div className={`hamburger ${isOpen ? "active" : ""}`}
             onClick={toggleHamburger}
@@ -171,7 +170,6 @@ const Navbar = ({ username }) => {
           <nav className={`nav-items ${isOpen ? "open" : ""}`}>
             <ul>
               <li><a href="/home">Home</a></li>
-              
               <li><a href="/admin">Admin</a></li>
               {/* <li><a href="/user">User</a></li> */}
               <li><a href="/products">Products</a></li>
