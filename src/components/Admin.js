@@ -103,7 +103,7 @@ const Admin = () => {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     
-    // Fetch orders when the component mounts
+    // Fetch orders when the cmpnt mounts
     useEffect(() => {
         axios
             .get("http://localhost:8080/api/admin/orders")
@@ -115,7 +115,7 @@ const Admin = () => {
                 console.error("Error fetching orders:", error);
                 setLoading(false);
             });
-    }, []); // Empty dependency array means it runs once on mount
+    }, []); // Empty dependency arr means it runs once on mount
 
     return (
         <>
@@ -141,7 +141,7 @@ const Admin = () => {
                     <div className="admin-overview">
                         <div className="overview-card">
                             <h3>Total Orders</h3>
-                            <p>{orders.length}</p> {/* Dynamically show total orders */}
+                            <p>{orders.length}</p> 
                         </div>
                         <div className="overview-card">
                             <h3>Total Users</h3>
@@ -154,11 +154,11 @@ const Admin = () => {
                         <div className="overview-card">
                             <h3>Revenue</h3>
                             <p>
-                                ₹
-                                {orders
+                              ₹ { orders
                                     .reduce((sum, order) => sum + order.totalPrice, 0)
-                                    .toLocaleString()}
-                            </p> {/* Dynamically calculate revenue */}
+                                    .toLocaleString()
+                                }
+                            </p> 
                         </div>
                     </div>
 
