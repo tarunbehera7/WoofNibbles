@@ -198,8 +198,6 @@ const Home = () => {
                     <img src={product.img} alt={product.name} />
                     <h3>{product.name}</h3>
                     <p>{product.price}</p>
-                    <p>{product.description}</p>
-                    <p>Rating: {product.rating}⭐</p>
                     <button className="buy-button">Buy Now</button>
                   </div>
                 ))}
