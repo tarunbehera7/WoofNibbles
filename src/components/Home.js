@@ -143,17 +143,19 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
   const topProducts = [
-    { id: 1, name: "Premium Dog Food", price: "₹1,499", img: dogFood },
-    { id: 2, name: "Chew Toy", price: "₹599", img: chewToy },
-    { id: 3, name: "Eco friendly Poop Bags", price: "₹349", img: poopBags },
+    { id: 1, name: "Premium Dry Dog Food", price: "₹1,499", img: dogFood,  
+        description: "High-quality dry food for adult dogs.",  rating: 4.5} ,
+    { id: 2, name: "Chew Toy", price: "₹599", img: chewToy, 
+        description: "Long-lasting chew toys for all dog breeds.", rating: 4.0 },
+    { id: 3, name: "Eco friendly Poop Bags", price: "₹349", img: poopBags,  
+        description: "Biodegradable poop bags for easy and eco-friendly disposal.", rating: 4.6 },
   ];
 
 
   return (
     <>
-      <Navbar username={firstName} />
+      <Navbar username= {firstName} />
 
       <div className="home-container">
         {loading ? (
@@ -196,6 +198,8 @@ const Home = () => {
                     <img src={product.img} alt={product.name} />
                     <h3>{product.name}</h3>
                     <p>{product.price}</p>
+                    <p>{product.description}</p>
+                    <p>Rating: {product.rating}⭐</p>
                     <button className="buy-button">Buy Now</button>
                   </div>
                 ))}
