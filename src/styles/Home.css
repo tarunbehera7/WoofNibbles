@@ -248,6 +248,30 @@
 }
 
 
+.footer-info {
+  margin-top: 20px;
+  font-size: 0.9rem;
+}
+
+.footer-info i {
+  transition: color 0.3s ease-in-out;
+}
+
+.footer-info .bxl-facebook:hover {
+  color: #145dbf;
+}
+
+.footer-info .bxl-twitter:hover {
+  color: #0d8ae9;
+}
+
+.footer-info .bxl-linkedin:hover {
+  color: #005582;
+}
+
+.footer-info .bxl-instagram:hover {
+  color: #bc165e;
+}
 
 /* .contact-section {
   display: flex;
