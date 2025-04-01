@@ -126,36 +126,43 @@
 
 
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../styles/Home.css";
 import Navbar from "./Navbar";
 import dog from "../assets/dog.png";
 import dogFood from "../assets/dog_food.jpeg";
 import chewToy from "../assets/chew_toys.jpeg";
 import poopBags from "../assets/poop_bags.jpeg";
+import Footer from "./Footer";
+import "../styles/Footer.css";
 
 const Home = () => {
+
   const [loading, setLoading] = useState(true);
   const firstName = localStorage.getItem("firstName") || "User";
+  const contactRef = useRef(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
+
   const topProducts = [
-    { id: 1, name: "Premium Dry Dog Food", price: "₹1,499", img: dogFood,  
-        description: "High-quality dry food for adult dogs.",  rating: 4.5} ,
-    { id: 2, name: "Chew Toy", price: "₹599", img: chewToy, 
-        description: "Long-lasting chew toys for all dog breeds.", rating: 4.0 },
-    { id: 3, name: "Eco friendly Poop Bags", price: "₹349", img: poopBags,  
-        description: "Biodegradable poop bags for easy and eco-friendly disposal.", rating: 4.6 },
+    { id: 1, name: "Premium Dog Food", price: "₹ 1,499", img: dogFood },
+    { id: 2, name: "Chew Toy", price: "₹ 599", img: chewToy },
+    { id: 3, name: "Eco friendly Poop Bags", price: "₹ 349", img: poopBags },
   ];
+
+  // Fn to scroll to the contact section
+  const scrollToContact = () => {
+    contactRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
 
   return (
     <>
-      <Navbar username= {firstName} />
+      <Navbar username={firstName} />
 
       <div className="home-container">
         {loading ? (
@@ -175,11 +182,27 @@ const Home = () => {
                   <h2>Find the Best Food For Your Pet</h2>
                   <div className="promo-text">
                     <p>
-                       Explore high-quality pet food, fun toys, and essential accessories—all in one place.
+                      Explore high-quality pet food, fun toys, and essential accessories—all in one place.
                     </p>
                     <div className="promo-buttons">
                       <button className="order-button">Order Now</button>
-                      <button className="contact-button">Contact Us</button>
+                      <button className="contact-button" onClick={scrollToContact}>Contact Us</button>
+                    </div>
+                    <div className="footer-info">
+                      <p>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                          <i className='bx bxl-facebook bx-sm'></i>
+                        </a>
+                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                          <i className='bx bxl-twitter bx-sm'></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                          <i className='bx bxl-linkedin bx-sm'></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                          <i className="bx bxl-instagram bx-sm"></i>
+                        </a>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -193,22 +216,38 @@ const Home = () => {
             <div className="top-products-section">
               <h2>Top Products</h2>
               <div className="products-grid">
-                {topProducts.map( (product) => (
+                {topProducts.map((product) => (
                   <div key={product.id} className="product-card">
                     <img src={product.img} alt={product.name} />
                     <h3>{product.name}</h3>
                     <p>{product.price}</p>
-                    <p>{product.description}</p>
-                    <p>Rating: {product.rating}⭐</p>
-                    <p>In Stock: {product.stock || 'Yes'}</p>
                     <button className="buy-button">Buy Now</button>
                   </div>
                 ))}
               </div>
             </div>
+
+            {/* Contact Section */}
+            <div className="contact-section" ref={contactRef}>
+              <h2>Contact Us</h2>
+              {/* <form className="contact-form"  action="https://formspree.io/f/xqapdrbo" method="POST"> */}
+              <form className="contact-form">
+                <label htmlFor="name">Name</label>
+                <input type="text" id="name" name="name" required />
+
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" name="email" required />
+
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit" className="submit-button1">Submit</button>
+              </form>
+            </div>
           </>
         )}
       </div>
+      <Footer />
     </>
   );
 };
