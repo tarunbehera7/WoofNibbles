@@ -136,6 +136,7 @@ import poopBags from "../assets/poop_bags.jpeg";
 import Footer from "./Footer";
 import "../styles/Footer.css";
 
+
 const Home = () => {
 
   const [loading, setLoading] = useState(true);
@@ -154,7 +155,7 @@ const Home = () => {
     { id: 3, name: "Eco friendly Poop Bags", price: "₹ 349", img: poopBags },
   ];
 
-  // Fn to scroll to the contact section
+  // Fn to scroll to the contact-section
   const scrollToContact = () => {
     contactRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -188,7 +189,9 @@ const Home = () => {
                       <button className="order-button">Order Now</button>
                       <button className="contact-button" onClick={scrollToContact}>Contact Us</button>
                     </div>
-                    <div className="footer-info">
+                  </div>
+                </div>
+                <div className="footer-info">
                       <p>
                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                           <i className='bx bxl-facebook bx-sm'></i>
@@ -204,15 +207,13 @@ const Home = () => {
                         </a>
                       </p>
                     </div>
-                  </div>
-                </div>
               </div>
               <div className="right-section">
                 <img src={dog} alt="Happy Pug with Pet Food" className="promo-image" />
               </div>
             </div>
 
-            {/* Top Products Section */}
+            {/* Top-Products Section */}
             <div className="top-products-section">
               <h2>Top Products</h2>
               <div className="products-grid">
