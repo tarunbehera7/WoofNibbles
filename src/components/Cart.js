@@ -379,7 +379,7 @@ const Cart = () => {
                     <h3 className="cart-total">Total: ₹{totalAmount.toLocaleString()}</h3>
                 </div>
 
-                {/* Right Section - Checkout */}
+                {/* Right Section- Checkout */}
                 <div className="checkout-section">
                     <h2 className="checkout-title">Checkout</h2>
                     <h3 className="checkout-total">Total Price: ₹{totalAmount.toFixed(2)}</h3>
