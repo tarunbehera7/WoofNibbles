@@ -1,0 +1,96 @@
+.footer {
+    background: linear-gradient(to right, #e0e0e0, #ffaf7b);
+    color: #fffdfa;
+    padding: 2px;
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+    /* margin-top: 50px; */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-logo .woof {
+    color: rgba(255, 225, 185, 1);
+}
+
+.footer-logo .nibbles {
+    color: rgba(108, 200, 255, 1);
+}
+
+.footer-nav {
+    margin-top: 20px;
+}
+
+.footer-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin: 0;
+}
+
+.footer-nav a {
+    text-decoration: none;
+    /* color: #fffdfa; */
+    color: rgb(70, 58, 52);
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    /* color: #f1ae7e; */
+     color: #ff7b54; 
+}
+
+.footer-info {
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+.footer-info i {
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-info .bxl-facebook:hover {
+    color: #145dbf;
+}
+
+.footer-info .bxl-twitter:hover {
+    color: #0d8ae9;
+}
+
+.footer-info .bxl-linkedin:hover {
+    color: #005582;
+}
+
+.footer-info .bxl-instagram:hover {
+    color: #bc165e;
+}
+
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+.footer-info a {
+    margin: 10px;
+    text-decoration: none;
+    color: #fffdfa;
+    font-weight: bold;
+}
+
+.footer-info a:hover {
+    color: #f1ae7e;
+}
+
+.bx {
+    gap: 20px;
+}
