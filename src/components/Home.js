@@ -148,22 +148,22 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="footer-info">
-                      <p>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                          <i className='bx bxl-facebook bx-sm'></i>
-                        </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                          <i className='bx bxl-twitter bx-sm'></i>
-                        </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-                          <i className='bx bxl-linkedin bx-sm'></i>
-                        </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                          <i className="bx bxl-instagram bx-sm"></i>
-                        </a>
-                      </p>
-                    </div>
+                <div className="footer-info1">
+                  <p>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                      <i className='bx bxl-facebook bx-sm'></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                      <i className='bx bxl-twitter bx-sm'></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                      <i className='bx bxl-linkedin bx-sm'></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                      <i className="bx bxl-instagram bx-sm"></i>
+                    </a>
+                  </p>
+                </div>
               </div>
               <div className="right-section">
                 <img src={dog} alt="Happy Pug with Pet Food" className="promo-image" />
@@ -201,6 +201,24 @@ const Home = () => {
 
                 <button type="submit" className="submit-button1">Submit</button>
               </form>
+            </div>
+
+            <div className="footer-info">
+              <p>&copy; 2025 <span className="woof">Woof</span><span className="nibbles">Nibbles</span>. All rights reserved.</p>
+              <p className="p">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                  <i className='bx bxl-facebook bx-sm'></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                  <i className='bx bxl-twitter bx-sm'></i>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                  <i className='bx bxl-linkedin bx-sm'></i>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                  <i className="bx bxl-instagram bx-sm"></i>
+                </a>
+              </p>
             </div>
           </>
         )}
