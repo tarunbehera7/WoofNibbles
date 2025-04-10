@@ -38,7 +38,8 @@ Steps -
 
 2. Backend Setup
     -> Open the WoofNibblesBackEnd folder in a
-        separate workspace.
+        separate workspace in spring boot.
+        run the WoofNibblesApplication.java file.
         
     -> Configure the application.properties file 
         with your MySQL credentials:
