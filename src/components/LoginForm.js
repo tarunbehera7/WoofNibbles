@@ -15,11 +15,13 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [showDialog, setShowDialog] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (showDialog && success === "Login successful!") { 
+    if (showDialog && success === "Login successful!") {
       // Only redirect on login success
       const timer = setTimeout(() => {
         setShowDialog(false);
@@ -35,6 +37,39 @@ const LoginForm = () => {
     setError("");
     setSuccess("");
 
+
+    // ----Validation for Login----
+    if (activeTab === "login") {
+      if (!loginEmail.includes("@") || !loginEmail.includes(".")) {
+        setError("Please enter a valid email address");
+        return;
+      }
+      // if (loginPassword.length < 8) {
+      //   setError("Password must be at least 8 characters long");
+      //   return;
+      // }
+    }
+    // Validation for Signup
+    else {
+      if (!signupFirstName.match(/^[A-Za-z]+$/) || signupFirstName.length < 2) {
+        setError("First name must contain only letters and be at least 2 characters long");
+        return;
+      }
+      if (!signupLastName.match(/^[A-Za-z]+$/) || signupLastName.length < 2) {
+        setError("Last name must contain only letters and be at least 2 characters long");
+        return;
+      }
+      if (!signupEmail.includes("@") || !signupEmail.includes(".")) {
+        setError("Please enter a valid email address");
+        return;
+      }
+      if (signupPassword.length < 8 || !/\d/.test(signupPassword)) {
+        setError("Password must be at least 8 characters long and contain at least one number");
+        return;
+      }
+    }
+
+
     try {
       if (activeTab === "login") {
         const response = await axios.post("http://localhost:8080/api/auth/login", {
@@ -44,9 +79,9 @@ const LoginForm = () => {
         setSuccess("Login successful!");
         localStorage.setItem("userEmail", loginEmail);
         localStorage.setItem("token", response.data.token);
-        localStorage.setItem("firstName", response.data.firstName); // Store firstName
+        localStorage.setItem("firstName", response.data.firstName);
         setShowDialog(true);
-      } 
+      }
       else {
         const response = await axios.post("http://localhost:8080/api/auth/register", {
           firstName: signupFirstName,
@@ -60,24 +95,26 @@ const LoginForm = () => {
         setSignupLastName("");
         setSignupEmail("");
         setSignupPassword("");
-        setShowDialog(true); // Show dialog, but no redirect
+        setShowDialog(true);
       }
-    } catch (err) {
+    }
+    catch (err) {
       setError(err.response?.data?.error || "Something went wrong");
-      console.error(err);
+      // console.error(err);
+      setShowDialog(true);
     }
   };
 
-  // Rest of the JSX remains unchanged
+
   return (
     <>
       {showDialog && (
-        <div className="success-dialog">
-          {success}
+        <div className={error ? "error-dialog" : "success-dialog"}>
+          {error || success}
         </div>
       )}
       <div className="login-form-container">
-        {error && <p className="error-message">{error}</p>}
+        {/* {error && <p className="error-message">{error}</p>} */}
         <ul className="tab-list">
           <li className="tab-item">
             <a
@@ -104,7 +141,8 @@ const LoginForm = () => {
             </a>
           </li>
         </ul>
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit} >
           {activeTab === "login" ? (
             <>
               <div className="form-group">
@@ -122,15 +160,21 @@ const LoginForm = () => {
               </div>
               <div className="form-group">
                 <div className="input-wrapper">
-                  <span className="input-icon">🔒</span>
+                  <span className="input-icon">🔑</span>
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className="form-input"
                     placeholder="Password"
                     value={loginPassword}
                     onChange={(e) => setLoginPassword(e.target.value)}
                     required
                   />
+                  <span
+                    className="toggle-password"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "🔒" : "👁️"}
+                  </span>
                 </div>
               </div>
               <div className="forgot-password">
