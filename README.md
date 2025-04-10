@@ -25,10 +25,10 @@ Installation 💻
 
 Prerequisites -
 
-    Node.js v20.18.3
-    Java Development Kit (JDK) 11 or later
-    MySQL Server 8.0.40 
-    Git
+    Node.js (v14.x or later).
+    Java Development Kit (JDK) 11 or later.
+    MySQL Server *.
+    Git.
 
 Steps -
 
