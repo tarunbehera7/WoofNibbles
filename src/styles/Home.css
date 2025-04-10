@@ -1,5 +1,6 @@
 * {
   font-family: "Poppins", sans-serif;
+  /* font-family: 'Baloo Tamma', cursive; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -99,6 +100,7 @@
 .welcome-message p {
   font-size: 1.2rem;
   color: #554840;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); 
   /* Navbar background color */
 }
 
@@ -111,6 +113,7 @@
   color: #554840;
   /* Navbar background color */
   margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15); 
 }
 
 .promo-text {
@@ -179,13 +182,18 @@
   font-size: 2.8rem;
   color: #6cc8ff;
   margin-bottom: 100px;
+  letter-spacing: 5px;
+  text-shadow: 
+    -1px -1px 0px #ffffff,     
+    3px 3px 0px #ffffff,
+    4px 4px 0px #00000055;
+  /* text-shadow: 4px 4px 0 #ddd; */
 }
 
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 50px;
-  /* Increased gap for full screen */
+  gap: 50px; /* Increased gap for full screen */
   justify-items: center;
   width: 100%;
   max-width: 1200px;
@@ -308,6 +316,13 @@ p a:last-child {
   font-size: 2.8rem;
   color: #6cc8ff;
   margin-bottom: 20px;
+  /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);  */
+  letter-spacing: 5px;
+  text-shadow: 
+    -1px -1px 0px #ffffff,     
+    3px 3px 0px #ffffff,
+    4px 4px 0px #00000055;
+  padding-bottom: 20px;
 }
 
 /* Contact Form */
@@ -317,8 +332,9 @@ p a:last-child {
   background-color: #ffffff;
   gap: 15px;
   width: 100%;
+  max-height:450px ;
   padding: 40px;
-  max-width: 600px;
+  max-width: 400px;
   border-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }

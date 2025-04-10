@@ -14,14 +14,6 @@ const Welcome = () => {
         Sign in to access your personalized meal plans, track your dog’s
         nutrition, and shop their favorite treats.
       </p>
-      {/* <div className="badge-container">
-        <span className="badge-item">
-          🐾 Fresh Ingredients <br /> 100% natural
-        </span>
-        <span className="badge-item">
-          🍽️ Custom Meals <br /> Tailored nutrition
-        </span>
-      </div> */}
       <div className="badge-container">
         <span className="badge-item">
           <span className="badge-icon">🦴</span>

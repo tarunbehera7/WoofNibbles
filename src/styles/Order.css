@@ -1,13 +1,15 @@
 .order-container {
+    padding: 80px 120px 40px;
     padding: 40px;
     max-width: 1200px;
     margin: auto;
     font-family: 'Poppins', sans-serif;
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
 }
 
 .order-title {
     font-size: 24px;
+    margin: 60px 0 20px; 
     font-weight: bold;
     margin-bottom: 20px;
     color: #333;
@@ -62,6 +64,36 @@
 .status.shipped {
     background-color: #2196F3;
     color: white;
+}
+
+
+.order-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.order-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center; /* Centers content horizontally */
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* Ensure table wrapper takes full width */
+.table-wrapper {
+    width: 100%;
+    flex-grow: 1;
+}
+
+/* Restore full table width */
+.order-table {
+    width: 100%;
 }
 
 /* Responsive Design */

@@ -14,20 +14,42 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.2);
 }
 
 .admin-logo {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.admin-icon {
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    margin-bottom: 4px;
 }
 
 .admin-menu {
     list-style: none;
     padding: 0;
+}
+
+.admin-menu a {
+    /* color: white;
+    text-decoration: none; */
+    display: block; 
+    padding: 1px;  
+    text-align:left;
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
 }
 
 .admin-menu li {
@@ -70,9 +92,38 @@
     text-align: center;
 }
 
+.overview-card-title {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.overview-card-title h3 {
+    padding-top: 10px;
+    text-align: center;
+}
+.overview-card .bx {
+    background-color: #f2f4f7;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;              
+    align-items: center;        
+    justify-content: center;
+    margin-right: 10px;  
+}
+
 .overview-card h3 {
-    font-size: 18px;
+    font-size: 24px;
     color: #555;
+    margin: 0 0 8px 0; /* properly align h3 & icon */
+    gap: 10px;
+}
+
+.overview-card h3 i {
+    margin-right: 10px; /* Spacing btw icon & text */
+    vertical-align: middle; /* Optional- aligns icon w text */
 }
 
 .overview-card p {
@@ -107,6 +158,10 @@
 .admin-table th {
     background-color: #5D4037;
     color: white;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none; /* Remove line after last row */
 }
 
 .status {

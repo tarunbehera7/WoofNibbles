@@ -1,9 +1,9 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; 
+    font-family: "Inter", sans-serif; 
 }
-
 html,
 body {
     height: 100%;
@@ -36,10 +36,10 @@ body {
 }
 
 .login-form-container::after {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     bottom: 10px;
-    left: -80px;
+    left: 10px;
     background-color: rgba(255, 235, 205, 0.5);
 }
 
@@ -241,10 +241,20 @@ body {
     overflow: hidden;
 }
 
+
 .input-icon {
     padding: 10px;
     /* background-color: #f8f9fa; */
     /* border-right: 1px solid #ced4da; */
+}
+
+.toggle-password {
+    cursor: pointer;
+    margin-left: -30px;
+    color: #555;
+    user-select: none;
+    font-size: 18px;
+    padding: 10px; 
 }
 
 .form-input {
@@ -253,6 +263,7 @@ body {
     border: none;
     outline: none;
     font-size: 1rem;
+    
 }
 
 .forgot-password {
@@ -331,6 +342,22 @@ body {
     /* Prevents it from becoming too wide */
 }
 
+.error-dialog {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f8d7da; /* Light red */
+    color: #721c24;            /* Dark red text */
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    padding: 10px 20px;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+}
 
 .content h1 {
     color: #4CAF50;

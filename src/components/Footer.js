@@ -17,16 +17,16 @@ const Footer = () => {
                 <div className="footer-info">
                     <p>&copy; 2025 <span className="woof">Woof</span><span className="nibbles">Nibbles</span>. All rights reserved.</p>
                     <p>
-                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
                             <i className='bx bxl-facebook bx-sm'></i>
                         </a>
-                        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
                             <i className='bx bxl-twitter bx-sm'></i>
                         </a>
-                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
                             <i className='bx bxl-linkedin bx-sm'></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
                             <i className="bx bxl-instagram bx-sm"></i>
                         </a> 
                     </p>

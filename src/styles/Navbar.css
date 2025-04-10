@@ -169,8 +169,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-     /* background-color: #554840;  */
-     background: linear-gradient(to right, #e0e0e0, #ffaf7b);
+    /* background-color: #554840;  */
+    background: linear-gradient(to right, #e0e0e0, #ffaf7b);
     padding: 10px 20px;
     color: #ffffff;
     font-weight: bold;
@@ -224,7 +224,8 @@
 
 .nav-items a {
     text-decoration: none;
-    color: #fffdfa;
+    /* color: #fffdfa; */
+    color: rgb(70, 58, 52);
     font-size: 18px;
     font-weight: 500;
     transition: color 0.3s ease;
@@ -232,7 +233,9 @@
 
 .nav-items a:hover {
     /* color: #f1ae7e; */
-    color: rgb(255, 180, 150);
+    /* color: rgb(255, 180, 150); */
+    color: #ff7b54; /* A warm peach-orange that matches your gradient */
+    text-shadow: 0 0 5px rgba(255, 180, 150, 0.3);
 }
 
 .nav-items a.active {
@@ -250,8 +253,12 @@
 }
 
 .username {
-    color: #f5e6d3; 
-    font-weight: bold;
+    /* color: #f5e6d3;  */
+    color: #333333;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    /* font-weight: bold; */
 }
 
 .logout-button {
