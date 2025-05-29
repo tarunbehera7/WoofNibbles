@@ -6,6 +6,9 @@ Overview 👁️
 WoofNibbles is a web-based e-commerce platform designed to facilitate online shopping. Built using Spring Boot for the backend and React for the frontend, it leverages a MySQL database for data persistence. The project features user authentication, product browsing, shopping cart management, order tracking, and an admin dashboard, aiming to provide a seamless user experience. All components were fully implemented as of April 09, 2025.
 
 
+![Image](https://github.com/user-attachments/assets/1388612d-9f5f-45e0-9e1a-34e9df1614d5)
+![Image](https://github.com/user-attachments/assets/142cc7b4-17d0-491b-8850-ab3c75b110c0)
+
 Features ⭐
 
 User Authentication: Secure registration and login system implemented in AuthLayout.js (containing LoginForm.js and welcome.js) with backend support from AuthController.java and UserService.java.
