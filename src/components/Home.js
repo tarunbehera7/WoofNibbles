@@ -36,7 +36,6 @@ const Home = () => {
   return (
     <>
       <Navbar username={firstName} />
-
       <div className="home-container">
         {loading ? (
           <div className="preloader">

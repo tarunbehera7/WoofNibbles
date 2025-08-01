@@ -35,8 +35,8 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    setError("");
-    setSuccess("");
+    setError("");  // Clear prev error.
+    setSuccess("");//  ""   ""   success.
 
     
     try {
@@ -234,6 +234,7 @@ const LoginForm = () => {
             </a>
           </p>
         </form>
+        
       </div>
     </>
   );
