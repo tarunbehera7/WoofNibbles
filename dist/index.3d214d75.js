@@ -25906,32 +25906,8 @@ const LoginForm = ()=>{
     ]);
     const handleSubmit = async (e)=>{
         e.preventDefault();
-        setError("");
-        setSuccess("");
-        // ----Validation for Login----
-        if (activeTab === "login") {
-            if (!loginEmail.includes("@") || !loginEmail.includes(".")) {
-                setError("Please enter a valid email address");
-                return;
-            }
-        } else {
-            if (!signupFirstName.match(/^[A-Za-z]+$/) || signupFirstName.length < 2) {
-                setError("First name must contain only letters and be at least 2 characters long");
-                return;
-            }
-            if (!signupLastName.match(/^[A-Za-z]+$/) || signupLastName.length < 2) {
-                setError("Last name must contain only letters and be at least 2 characters long");
-                return;
-            }
-            if (!signupEmail.includes("@") || !signupEmail.includes(".")) {
-                setError("Please enter a valid email address");
-                return;
-            }
-            if (signupPassword.length < 8 || !/\d/.test(signupPassword)) {
-                setError("Password must be at least 8 characters long and contain at least one number");
-                return;
-            }
-        }
+        setError(""); // Clear prev error.
+        setSuccess(""); //  ""   ""   success.
         try {
             if (activeTab === "login") {
                 const response = await (0, _axiosDefault.default).post("http://localhost:8080/api/auth/login", {
@@ -25971,7 +25947,7 @@ const LoginForm = ()=>{
                 children: error || success
             }, void 0, false, {
                 fileName: "src/components/LoginForm.js",
-                lineNumber: 112,
+                lineNumber: 81,
                 columnNumber: 9
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -25992,12 +25968,12 @@ const LoginForm = ()=>{
                                     children: "Login"
                                 }, void 0, false, {
                                     fileName: "src/components/LoginForm.js",
-                                    lineNumber: 120,
+                                    lineNumber: 89,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/LoginForm.js",
-                                lineNumber: 119,
+                                lineNumber: 88,
                                 columnNumber: 11
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -26012,18 +25988,18 @@ const LoginForm = ()=>{
                                     children: "Sign Up"
                                 }, void 0, false, {
                                     fileName: "src/components/LoginForm.js",
-                                    lineNumber: 132,
+                                    lineNumber: 101,
                                     columnNumber: 13
                                 }, undefined)
                             }, void 0, false, {
                                 fileName: "src/components/LoginForm.js",
-                                lineNumber: 131,
+                                lineNumber: 100,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/LoginForm.js",
-                        lineNumber: 118,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -26041,7 +26017,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDCE7"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 150,
+                                                    lineNumber: 119,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26053,18 +26029,18 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 151,
+                                                    lineNumber: 120,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 149,
+                                            lineNumber: 118,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 148,
+                                        lineNumber: 117,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26077,7 +26053,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDD11"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 163,
+                                                    lineNumber: 132,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26089,7 +26065,7 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 164,
+                                                    lineNumber: 133,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
@@ -26098,18 +26074,18 @@ const LoginForm = ()=>{
                                                     children: showPassword ? "\uD83D\uDD12" : "\uD83D\uDC41\uFE0F"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 172,
+                                                    lineNumber: 141,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 162,
+                                            lineNumber: 131,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 161,
+                                        lineNumber: 130,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26120,12 +26096,12 @@ const LoginForm = ()=>{
                                             children: "Forgot password?"
                                         }, void 0, false, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 181,
+                                            lineNumber: 150,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 180,
+                                        lineNumber: 149,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26134,7 +26110,7 @@ const LoginForm = ()=>{
                                         children: "\uD83D\uDC3E Login"
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 183,
+                                        lineNumber: 152,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
@@ -26150,7 +26126,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDC64"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 191,
+                                                    lineNumber: 160,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26166,18 +26142,18 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 192,
+                                                    lineNumber: 161,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 190,
+                                            lineNumber: 159,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 189,
+                                        lineNumber: 158,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26190,7 +26166,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDC64"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 208,
+                                                    lineNumber: 177,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26206,18 +26182,18 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 209,
+                                                    lineNumber: 178,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 207,
+                                            lineNumber: 176,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 206,
+                                        lineNumber: 175,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26230,7 +26206,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDCE7"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 225,
+                                                    lineNumber: 194,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26242,18 +26218,18 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 226,
+                                                    lineNumber: 195,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 224,
+                                            lineNumber: 193,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 223,
+                                        lineNumber: 192,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -26266,7 +26242,7 @@ const LoginForm = ()=>{
                                                     children: "\uD83D\uDD12"
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 238,
+                                                    lineNumber: 207,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -26278,18 +26254,18 @@ const LoginForm = ()=>{
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/LoginForm.js",
-                                                    lineNumber: 239,
+                                                    lineNumber: 208,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/LoginForm.js",
-                                            lineNumber: 237,
+                                            lineNumber: 206,
                                             columnNumber: 17
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 236,
+                                        lineNumber: 205,
                                         columnNumber: 15
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -26298,7 +26274,7 @@ const LoginForm = ()=>{
                                         children: "\uD83D\uDC3E Sign Up"
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 249,
+                                        lineNumber: 218,
                                         columnNumber: 15
                                     }, undefined)
                                 ]
@@ -26317,25 +26293,25 @@ const LoginForm = ()=>{
                                         children: activeTab === "login" ? "Sign up" : "Login"
                                     }, void 0, false, {
                                         fileName: "src/components/LoginForm.js",
-                                        lineNumber: 256,
+                                        lineNumber: 225,
                                         columnNumber: 13
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/LoginForm.js",
-                                lineNumber: 254,
+                                lineNumber: 223,
                                 columnNumber: 11
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/LoginForm.js",
-                        lineNumber: 145,
+                        lineNumber: 114,
                         columnNumber: 9
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/LoginForm.js",
-                lineNumber: 116,
+                lineNumber: 85,
                 columnNumber: 7
             }, undefined)
         ]
@@ -31501,20 +31477,20 @@ const Home = ()=>{
                             className: "spinner"
                         }, void 0, false, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 43,
+                            lineNumber: 42,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                             children: "Loading..."
                         }, void 0, false, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 44,
+                            lineNumber: 43,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/Home.js",
-                    lineNumber: 42,
+                    lineNumber: 41,
                     columnNumber: 11
                 }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                     children: [
@@ -31535,20 +31511,20 @@ const Home = ()=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 51,
+                                                    lineNumber: 50,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     children: "Enjoy exploring WoofNibbles!"
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 52,
+                                                    lineNumber: 51,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 50,
+                                            lineNumber: 49,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31558,7 +31534,7 @@ const Home = ()=>{
                                                     children: "Find the Best Food For Your Pet"
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 55,
+                                                    lineNumber: 54,
                                                     columnNumber: 19
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31568,7 +31544,7 @@ const Home = ()=>{
                                                             children: "Explore high-quality pet food, fun toys, and essential accessories\u2014all in one place."
                                                         }, void 0, false, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 57,
+                                                            lineNumber: 56,
                                                             columnNumber: 21
                                                         }, undefined),
                                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31579,7 +31555,7 @@ const Home = ()=>{
                                                                     children: "Order Now"
                                                                 }, void 0, false, {
                                                                     fileName: "src/components/Home.js",
-                                                                    lineNumber: 61,
+                                                                    lineNumber: 60,
                                                                     columnNumber: 23
                                                                 }, undefined),
                                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -31588,25 +31564,25 @@ const Home = ()=>{
                                                                     children: "Contact Us"
                                                                 }, void 0, false, {
                                                                     fileName: "src/components/Home.js",
-                                                                    lineNumber: 62,
+                                                                    lineNumber: 61,
                                                                     columnNumber: 23
                                                                 }, undefined)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 60,
+                                                            lineNumber: 59,
                                                             columnNumber: 21
                                                         }, undefined)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 56,
+                                                    lineNumber: 55,
                                                     columnNumber: 19
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 54,
+                                            lineNumber: 53,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31621,12 +31597,12 @@ const Home = ()=>{
                                                             className: "bx bxl-facebook bx-sm"
                                                         }, void 0, false, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 69,
+                                                            lineNumber: 68,
                                                             columnNumber: 23
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/components/Home.js",
-                                                        lineNumber: 68,
+                                                        lineNumber: 67,
                                                         columnNumber: 21
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31637,12 +31613,12 @@ const Home = ()=>{
                                                             className: "bx bxl-twitter bx-sm"
                                                         }, void 0, false, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 72,
+                                                            lineNumber: 71,
                                                             columnNumber: 23
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/components/Home.js",
-                                                        lineNumber: 71,
+                                                        lineNumber: 70,
                                                         columnNumber: 21
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31653,12 +31629,12 @@ const Home = ()=>{
                                                             className: "bx bxl-linkedin bx-sm"
                                                         }, void 0, false, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 75,
+                                                            lineNumber: 74,
                                                             columnNumber: 23
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/components/Home.js",
-                                                        lineNumber: 74,
+                                                        lineNumber: 73,
                                                         columnNumber: 21
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31669,29 +31645,29 @@ const Home = ()=>{
                                                             className: "bx bxl-instagram bx-sm"
                                                         }, void 0, false, {
                                                             fileName: "src/components/Home.js",
-                                                            lineNumber: 78,
+                                                            lineNumber: 77,
                                                             columnNumber: 23
                                                         }, undefined)
                                                     }, void 0, false, {
                                                         fileName: "src/components/Home.js",
-                                                        lineNumber: 77,
+                                                        lineNumber: 76,
                                                         columnNumber: 21
                                                     }, undefined)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/Home.js",
-                                                lineNumber: 67,
+                                                lineNumber: 66,
                                                 columnNumber: 19
                                             }, undefined)
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 66,
+                                            lineNumber: 65,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 49,
+                                    lineNumber: 48,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31702,18 +31678,18 @@ const Home = ()=>{
                                         className: "promo-image"
                                     }, void 0, false, {
                                         fileName: "src/components/Home.js",
-                                        lineNumber: 84,
+                                        lineNumber: 83,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 83,
+                                    lineNumber: 82,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 48,
+                            lineNumber: 47,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31723,7 +31699,7 @@ const Home = ()=>{
                                     children: "Top Products"
                                 }, void 0, false, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 90,
+                                    lineNumber: 89,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31736,21 +31712,21 @@ const Home = ()=>{
                                                     alt: product.name
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 94,
+                                                    lineNumber: 93,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                                     children: product.name
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 95,
+                                                    lineNumber: 94,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                                     children: product.price
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 96,
+                                                    lineNumber: 95,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -31758,24 +31734,24 @@ const Home = ()=>{
                                                     children: "Buy Now"
                                                 }, void 0, false, {
                                                     fileName: "src/components/Home.js",
-                                                    lineNumber: 97,
+                                                    lineNumber: 96,
                                                     columnNumber: 21
                                                 }, undefined)
                                             ]
                                         }, product.id, true, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 93,
+                                            lineNumber: 92,
                                             columnNumber: 19
                                         }, undefined))
                                 }, void 0, false, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 91,
+                                    lineNumber: 90,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 89,
+                            lineNumber: 88,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31786,7 +31762,7 @@ const Home = ()=>{
                                     children: "Contact Us"
                                 }, void 0, false, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 105,
+                                    lineNumber: 104,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -31797,7 +31773,7 @@ const Home = ()=>{
                                             children: "Name"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 108,
+                                            lineNumber: 107,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -31807,7 +31783,7 @@ const Home = ()=>{
                                             required: true
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 109,
+                                            lineNumber: 108,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -31815,7 +31791,7 @@ const Home = ()=>{
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 111,
+                                            lineNumber: 110,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
@@ -31825,7 +31801,7 @@ const Home = ()=>{
                                             required: true
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 112,
+                                            lineNumber: 111,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -31833,7 +31809,7 @@ const Home = ()=>{
                                             children: "Message"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 114,
+                                            lineNumber: 113,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
@@ -31842,7 +31818,7 @@ const Home = ()=>{
                                             required: true
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 115,
+                                            lineNumber: 114,
                                             columnNumber: 17
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -31851,19 +31827,19 @@ const Home = ()=>{
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 117,
+                                            lineNumber: 116,
                                             columnNumber: 17
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/Home.js",
-                                    lineNumber: 107,
+                                    lineNumber: 106,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 104,
+                            lineNumber: 103,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -31879,12 +31855,12 @@ const Home = ()=>{
                                             className: "bx bxl-facebook bx-sm"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 124,
+                                            lineNumber: 123,
                                             columnNumber: 19
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/Home.js",
-                                        lineNumber: 123,
+                                        lineNumber: 122,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31895,12 +31871,12 @@ const Home = ()=>{
                                             className: "bx bxl-twitter bx-sm"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 127,
+                                            lineNumber: 126,
                                             columnNumber: 19
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/Home.js",
-                                        lineNumber: 126,
+                                        lineNumber: 125,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31911,12 +31887,12 @@ const Home = ()=>{
                                             className: "bx bxl-linkedin bx-sm"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 130,
+                                            lineNumber: 129,
                                             columnNumber: 19
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/Home.js",
-                                        lineNumber: 129,
+                                        lineNumber: 128,
                                         columnNumber: 17
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("a", {
@@ -31927,35 +31903,35 @@ const Home = ()=>{
                                             className: "bx bxl-instagram bx-sm"
                                         }, void 0, false, {
                                             fileName: "src/components/Home.js",
-                                            lineNumber: 133,
+                                            lineNumber: 132,
                                             columnNumber: 19
                                         }, undefined)
                                     }, void 0, false, {
                                         fileName: "src/components/Home.js",
-                                        lineNumber: 132,
+                                        lineNumber: 131,
                                         columnNumber: 17
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Home.js",
-                                lineNumber: 122,
+                                lineNumber: 121,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/Home.js",
-                            lineNumber: 121,
+                            lineNumber: 120,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 40,
+                lineNumber: 39,
                 columnNumber: 7
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                 fileName: "src/components/Home.js",
-                lineNumber: 140,
+                lineNumber: 139,
                 columnNumber: 7
             }, undefined)
         ]
@@ -36641,12 +36617,13 @@ var _footerDefault = parcelHelpers.interopDefault(_footer);
 var _s = $RefreshSig$();
 const Cart = ()=>{
     _s();
+    console.log("Cart component loaded"); // Test if component loads
     const [cartItems, setCartItems] = (0, _react.useState)([]);
     const [name, setName] = (0, _react.useState)('');
     const [email, setEmail] = (0, _react.useState)('');
     const [address, setAddress] = (0, _react.useState)('');
     const [paymentMethod, setPaymentMethod] = (0, _react.useState)('');
-    const [showDialog, setShowDialog] = (0, _react.useState)(false); // Added showDialog state
+    const [showDialog, setShowDialog] = (0, _react.useState)(false);
     const firstName = localStorage.getItem("firstName") || "User";
     const navigate = (0, _reactRouterDom.useNavigate)();
     (0, _react.useEffect)(()=>{
@@ -36684,17 +36661,90 @@ const Cart = ()=>{
         };
         try {
             await (0, _axiosDefault.default).post('http://localhost:8080/api/admin/orders', orderData);
-            setShowDialog(true); // Show dialog on success
+            setShowDialog(true);
             setTimeout(()=>{
-                setShowDialog(false); // Hide dialog after 3 seconds
-                setCartItems([]); // Clear cart
-                localStorage.removeItem("cart"); // Clear local storage
-                navigate('/orders'); // Redirect to Orders page
+                setShowDialog(false);
+                setCartItems([]);
+                localStorage.removeItem("cart");
+                navigate('/orders');
             }, 3000);
         } catch (error) {
             console.error("Error placing order:", error);
             alert("Failed to place order. Please try again.");
         }
+    };
+    const handlePayment = async ()=>{
+        console.log("=== PAYMENT DEBUG START ===");
+        // Validation checks
+        if (cartItems.length === 0) {
+            console.log("\u274C Cart is empty");
+            alert("Your cart is empty!");
+            return;
+        }
+        if (!name || !email || !address || !paymentMethod) {
+            console.log("\u274C Missing checkout details:", {
+                name,
+                email,
+                address,
+                paymentMethod
+            });
+            alert("Please fill in all checkout details!");
+            return;
+        }
+        console.log("\u2705 Validation passed");
+        try {
+            const amount = totalAmount * 100; // Razorpay accepts paise
+            console.log("\uD83D\uDCB0 Amount in paise:", amount);
+            // Step 1: Create order in backend
+            console.log("\uD83D\uDCE1 Making API call to backend...");
+            const response = await (0, _axiosDefault.default).post('http://localhost:8080/api/payment/create-order', {
+                amount
+            });
+            console.log("\u2705 Backend response received:", response);
+            if (!response.data) throw new Error("No data received from backend");
+            const data = response.data;
+            console.log("\uD83D\uDCE6 Razorpay Order data:", data);
+            const options = {
+                key: "rzp_test_pGJiYviIJtVNJI",
+                amount: data.amount,
+                currency: data.currency,
+                name: "WoofNibbles",
+                description: "Pet Products Payment",
+                order_id: data.id,
+                handler: function(response) {
+                    console.log("\uD83C\uDF89 Payment successful:", response);
+                    alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+                    handlePlaceOrder();
+                },
+                prefill: {
+                    name,
+                    email,
+                    contact: "9999999999"
+                },
+                theme: {
+                    color: "#F37254"
+                }
+            };
+            console.log("\u2699\uFE0F Razorpay options:", options);
+            // Check if Razorpay is loaded
+            if (typeof window.Razorpay === 'undefined') {
+                console.log("\u274C Razorpay SDK not loaded");
+                alert("Razorpay SDK not loaded. Please refresh the page and try again.");
+                return;
+            }
+            console.log("\u2705 Razorpay SDK is loaded");
+            console.log("\uD83D\uDE80 Opening Razorpay payment modal...");
+            const rzp = new window.Razorpay(options);
+            console.log("\uD83D\uDD27 Razorpay instance created:", rzp);
+            rzp.open();
+            console.log("\u2705 Razorpay modal opened");
+        } catch (error) {
+            console.error("\uD83D\uDCA5 Error in payment process:", error);
+            console.error("\uD83D\uDCCB Error details:", error.response?.data || error.message);
+            console.error("\uD83C\uDF10 Network error:", error.response?.status, error.response?.statusText);
+            alert("Failed to initiate payment. Please check console for details.");
+        }
+        console.log("=== PAYMENT DEBUG END ===");
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
@@ -36702,8 +36752,8 @@ const Cart = ()=>{
                 username: firstName
             }, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 72,
-                columnNumber: 10
+                lineNumber: 150,
+                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 children: [
@@ -36718,16 +36768,16 @@ const Cart = ()=>{
                                         children: "Shopping Cart"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 78,
-                                        columnNumber: 21
+                                        lineNumber: 155,
+                                        columnNumber: 25
                                     }, undefined),
                                     cartItems.length === 0 ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                                         className: "cart-empty",
                                         children: "Your cart is empty."
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 80,
-                                        columnNumber: 25
+                                        lineNumber: 158,
+                                        columnNumber: 33
                                     }, undefined) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("ul", {
                                         className: "cart-list",
                                         children: cartItems.map((item)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("li", {
@@ -36742,8 +36792,8 @@ const Cart = ()=>{
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "src/components/Cart.js",
-                                                        lineNumber: 85,
-                                                        columnNumber: 37
+                                                        lineNumber: 164,
+                                                        columnNumber: 45
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                                         className: "remove-btn",
@@ -36751,19 +36801,19 @@ const Cart = ()=>{
                                                         children: "Remove"
                                                     }, void 0, false, {
                                                         fileName: "src/components/Cart.js",
-                                                        lineNumber: 86,
-                                                        columnNumber: 37
+                                                        lineNumber: 165,
+                                                        columnNumber: 45
                                                     }, undefined)
                                                 ]
                                             }, item.id, true, {
                                                 fileName: "src/components/Cart.js",
-                                                lineNumber: 84,
-                                                columnNumber: 33
+                                                lineNumber: 163,
+                                                columnNumber: 41
                                             }, undefined))
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 82,
-                                        columnNumber: 25
+                                        lineNumber: 161,
+                                        columnNumber: 33
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         className: "cart-total",
@@ -36773,14 +36823,14 @@ const Cart = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 91,
-                                        columnNumber: 21
+                                        lineNumber: 170,
+                                        columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Cart.js",
-                                lineNumber: 77,
-                                columnNumber: 17
+                                lineNumber: 154,
+                                columnNumber: 21
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                                 className: "checkout-section",
@@ -36790,8 +36840,8 @@ const Cart = ()=>{
                                         children: "Checkout"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 96,
-                                        columnNumber: 21
+                                        lineNumber: 175,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                                         className: "checkout-total",
@@ -36801,16 +36851,16 @@ const Cart = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 97,
-                                        columnNumber: 21
+                                        lineNumber: 176,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "checkout-label",
                                         children: "Name:"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 99,
-                                        columnNumber: 21
+                                        lineNumber: 178,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                         type: "text",
@@ -36820,16 +36870,16 @@ const Cart = ()=>{
                                         placeholder: "Enter your name"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 100,
-                                        columnNumber: 21
+                                        lineNumber: 179,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "checkout-label",
                                         children: "Email:"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 108,
-                                        columnNumber: 21
+                                        lineNumber: 187,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("input", {
                                         type: "email",
@@ -36839,16 +36889,16 @@ const Cart = ()=>{
                                         placeholder: "Enter your email"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 109,
-                                        columnNumber: 21
+                                        lineNumber: 188,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "checkout-label",
                                         children: "Address:"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 117,
-                                        columnNumber: 21
+                                        lineNumber: 196,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("textarea", {
                                         className: "checkout-textarea",
@@ -36857,16 +36907,16 @@ const Cart = ()=>{
                                         placeholder: "Enter your address"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 118,
-                                        columnNumber: 21
+                                        lineNumber: 197,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
                                         className: "checkout-label",
                                         children: "Payment Method:"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 125,
-                                        columnNumber: 21
+                                        lineNumber: 204,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
                                         className: "checkout-select",
@@ -36878,78 +36928,90 @@ const Cart = ()=>{
                                                 children: "Select a payment method"
                                             }, void 0, false, {
                                                 fileName: "src/components/Cart.js",
-                                                lineNumber: 131,
-                                                columnNumber: 25
+                                                lineNumber: 210,
+                                                columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                 value: "Credit/Debit Card",
                                                 children: "Credit/Debit Card"
                                             }, void 0, false, {
                                                 fileName: "src/components/Cart.js",
-                                                lineNumber: 132,
-                                                columnNumber: 25
+                                                lineNumber: 211,
+                                                columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                 value: "UPI",
                                                 children: "UPI"
                                             }, void 0, false, {
                                                 fileName: "src/components/Cart.js",
-                                                lineNumber: 133,
-                                                columnNumber: 25
+                                                lineNumber: 212,
+                                                columnNumber: 29
                                             }, undefined),
                                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                                 value: "Cash on Delivery",
                                                 children: "Cash on Delivery"
                                             }, void 0, false, {
                                                 fileName: "src/components/Cart.js",
-                                                lineNumber: 134,
-                                                columnNumber: 25
+                                                lineNumber: 213,
+                                                columnNumber: 29
                                             }, undefined)
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 126,
-                                        columnNumber: 21
+                                        lineNumber: 205,
+                                        columnNumber: 25
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
                                         className: "checkout-btn",
-                                        onClick: handlePlaceOrder,
+                                        onClick: handlePayment,
                                         children: "Place Order"
                                     }, void 0, false, {
                                         fileName: "src/components/Cart.js",
-                                        lineNumber: 137,
-                                        columnNumber: 21
+                                        lineNumber: 216,
+                                        columnNumber: 25
+                                    }, undefined),
+                                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+                                        onClick: ()=>alert("Test button works!"),
+                                        style: {
+                                            marginTop: '10px',
+                                            padding: '10px'
+                                        },
+                                        children: "Test Button"
+                                    }, void 0, false, {
+                                        fileName: "src/components/Cart.js",
+                                        lineNumber: 217,
+                                        columnNumber: 25
                                     }, undefined)
                                 ]
                             }, void 0, true, {
                                 fileName: "src/components/Cart.js",
-                                lineNumber: 95,
-                                columnNumber: 17
+                                lineNumber: 174,
+                                columnNumber: 21
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Cart.js",
-                        lineNumber: 75,
-                        columnNumber: 13
+                        lineNumber: 152,
+                        columnNumber: 17
                     }, undefined),
                     showDialog && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                         className: "success-dialog",
                         children: "Order placed successfully! Redirecting to Orders..."
                     }, void 0, false, {
                         fileName: "src/components/Cart.js",
-                        lineNumber: 143,
-                        columnNumber: 17
+                        lineNumber: 223,
+                        columnNumber: 21
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 73,
-                columnNumber: 9
+                lineNumber: 151,
+                columnNumber: 13
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _footerDefault.default), {}, void 0, false, {
                 fileName: "src/components/Cart.js",
-                lineNumber: 148,
-                columnNumber: 9
+                lineNumber: 228,
+                columnNumber: 13
             }, undefined)
         ]
     }, void 0, true);
