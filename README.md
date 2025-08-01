@@ -19,7 +19,7 @@ Footer Section: Consistent footer across pages, implemented in Footer.js.
 Homepage: Displays navbar, product previews, and contact form, implemented in Home.js.
 
 
-
+ 
 Installation 💻
 
 
