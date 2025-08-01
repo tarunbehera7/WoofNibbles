@@ -27,4 +27,17 @@ public class OrderService {
         }
         return orderRepo.save(order);
     }
+    //
+    // public Order createOrder(Order order, String paymentId) {
+    //     if (order.getTotalPrice() == null || order.getTotalPrice() <= 0) {
+    //     throw new CustomException("Order total price must be greater than 0.");
+    //     }
+    //
+    //// Add payment ID to order
+    //    order.setPaymentId(paymentId);
+    //    order.setPaymentStatus("COMPLETED");
+    //
+    //    return orderRepo.save(order);
+    // }
+
 }
